@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ProjectMarvel</string>
+    <string name="home">Home</string>
+    <string name="characters">Personajes</string>
+    <string name="character_comics">Comics del personaje</string>
+    <string name="comic">Comic</string>
+</resources>
