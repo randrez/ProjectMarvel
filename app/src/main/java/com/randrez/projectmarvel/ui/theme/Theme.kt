@@ -30,32 +30,34 @@ fun ProjectMarvelTheme(
         darkTheme -> darkColorScheme(
             primary = RED_A700,
             primaryContainer = RED_900,
-            secondary = GREY_300,
-            background = BLACK,
-            surface = GRAY_900,
+            secondary = GRAY_300,
+            background = GRAY_900,
+            surface = BLACK,
             onPrimary = WHITE,
             onSecondary = BLACK,
             onBackground = GRAY_50,
             onSurface = WHITE,
+            scrim = GRAY_900
         )
 
         else -> lightColorScheme(
             primary = RED_A700,
             primaryContainer = RED_900,
-            secondary = GREY_300,
+            secondary = GRAY_300,
             background = WHITE,
             surface = GRAY_50,
             onPrimary = WHITE,
             onSecondary = BLACK,
-            onBackground = BLACK,
+            onBackground = GRAY_900,
             onSurface = BLACK,
+            scrim = GRAY_900
         )
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = colorScheme.scrim.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
