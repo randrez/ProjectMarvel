@@ -90,7 +90,6 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.4.3")
     implementation("androidx.compose.ui:ui-util:1.4.3")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha10")
-    implementation("com.valentinilk.shimmer:compose-shimmer:1.0.0")
     implementation("io.coil-kt:coil-compose:1.3.1")
     implementation("io.coil-kt:coil-gif:1.3.1")
     implementation("androidx.compose.animation:animation-graphics:1.1.0-alpha01")
