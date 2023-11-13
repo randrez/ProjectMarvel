@@ -1,6 +1,9 @@
 package com.randrez.projectmarvel.di
 
 import com.randrez.projectmarvel.BuildConfig
+import com.randrez.projectmarvel.data.remote.MarvelApi
+import com.randrez.projectmarvel.data.remote.interceptors.MD5Interceptor
+import com.randrez.projectmarvel.domain.repository.dataStore.DataStoreRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,15 +33,18 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    fun provideMD5Interceptor(dataStoreRepository: DataStoreRepository): MD5Interceptor =
+        MD5Interceptor(dataStoreRepository = dataStoreRepository)
+
+    @Singleton
+    @Provides
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        // authInterceptor: AuthInterceptor,
-        // errorHandlingInterceptor: ErrorHandlingInterceptor
+        mD5Interceptor: MD5Interceptor
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            // .addInterceptor(authInterceptor)
-            // .addInterceptor(errorHandlingInterceptor)
+            .addInterceptor(mD5Interceptor)
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
@@ -50,5 +56,10 @@ object NetworkModule {
         Retrofit.Builder()
             .addConverterFactory(gson)
             .client(client)
-            .baseUrl("").build()
+            .baseUrl(BuildConfig.URL_BASE).build()
+
+    @Singleton
+    @Provides
+    fun provideMarvelApi(retrofit: Retrofit): MarvelApi =
+        retrofit.create(MarvelApi::class.java)
 }

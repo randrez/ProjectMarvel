@@ -2,8 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/logoColombia"
-        android:width="180dp"
-        android:height="90dp"
+        android:width="190dp"
+        android:height="100dp"
         android:gravity="center">
         <bitmap android:src="@drawable/marvel" />
     </item>

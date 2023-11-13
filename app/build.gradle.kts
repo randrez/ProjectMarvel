@@ -23,6 +23,15 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "PUBLIC_API_KEY", "\"94ed4f1ac7b02ec2045f5ac4de536b44\"")
+        buildConfigField(
+            "String",
+            "PRIVATE_API_KEY",
+            "\"a0ea49160191192ed3e5dbeead0432fc3c51b03b\""
+        )
+        buildConfigField("String", "TS", "\"1000\"")
+        buildConfigField("String", "URL_VERSION_PUBLIC", "\"v1/public/\"")
+        buildConfigField("String", "URL_BASE", "\"http://gateway.marvel.com/\"")
     }
 
     buildTypes {
@@ -136,4 +145,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
     implementation("io.grpc:grpc-okhttp:1.52.1")
+
+    //lottie
+    implementation("com.airbnb.android:lottie-compose:4.0.0")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:1.3.2")
 }
