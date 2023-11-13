@@ -10,4 +10,6 @@ val WHITE = Color(0xFFFFFFFF)
 val GRAY_50 = Color(0xFFFAFAFA)
 val BLACK = Color(0xFF000000)
 val GRAY_900 = Color(0xFF212121)
+val BLUE_900 = Color(0xFF0D47A1)
+val GREEN_900 = Color(0xFF1B5E20)
 
