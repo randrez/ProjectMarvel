@@ -58,7 +58,7 @@ fun ItemCharacter(character: Character, onSelectCharacter: (Int) -> Unit) {
                 )
         ) {
             Column {
-                LoadImageComponent(character.image, color = color.copy(alpha = 0.5f))
+                LoadImageComponent(character.image, color = color)
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
