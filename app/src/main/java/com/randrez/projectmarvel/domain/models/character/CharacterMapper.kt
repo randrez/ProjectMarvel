@@ -12,7 +12,7 @@ fun CharacterDTO.toCharacter(): Character =
         id = this.id,
         name = this.name,
         image = "${this.thumbnailCharacter?.path ?: ""}.${this.thumbnailCharacter?.extension ?: ""}",
-        background = this.name?.toColor()
+        background = this.name.toColor()
     )
 
 fun String.toColor(): Color =

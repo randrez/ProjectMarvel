@@ -10,7 +10,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.randrez.projectmarvel.R
 
 @Composable
-fun AnimationProgress(modifier: Modifier = Modifier, isPlaying:Boolean) {
+fun AnimationProgress(modifier: Modifier = Modifier) {
     val preloaderLottieComposition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(
             R.raw.marvel_logo_animation
@@ -20,7 +20,7 @@ fun AnimationProgress(modifier: Modifier = Modifier, isPlaying:Boolean) {
     LottieAnimation(
         composition = preloaderLottieComposition,
         modifier = modifier,
-        isPlaying = isPlaying,
+        isPlaying = true,
         iterations = LottieConstants.IterateForever
     )
 }

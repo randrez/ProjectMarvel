@@ -11,6 +11,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val generateMD5UseCase: GenerateMD5UseCase
 ) : ViewModel() {
+
     fun generateMD5() {
         viewModelScope.launch {
             generateMD5UseCase.invoke()

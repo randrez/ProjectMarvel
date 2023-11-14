@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,7 +31,7 @@ fun TopBarWithIconMarvel() {
         Image(
             painter = painterResource(id = R.drawable.ic_marvel),
             contentDescription = null,
-            modifier = Modifier.size(80.dp)
+            modifier = Modifier.size(100.dp)
         )
     }
 }
@@ -48,7 +48,7 @@ fun TopAppBarMarvel(onBack: () -> Unit) {
         Box(contentAlignment = Alignment.Center) {
             IconButton(onClick = onBack) {
                 Icon(
-                    imageVector = Icons.Filled.ArrowBack,
+                    imageVector = Icons.Filled.ArrowBackIosNew,
                     contentDescription = "Arrow Back",
                     tint = MaterialTheme.colorScheme.onSecondary
                 )

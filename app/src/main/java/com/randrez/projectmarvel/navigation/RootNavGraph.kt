@@ -28,6 +28,7 @@ fun RootNavGraph(navController: NavHostController) {
         composable(route = Characters.route) {
             val viewModel: CharacterListViewModel = hiltViewModel()
             CharacterListScreen(
+                state = viewModel.state.value,
                 characters = viewModel.characters,
                 loading = viewModel.isLoading.value
             ) {

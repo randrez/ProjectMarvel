@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -37,7 +38,8 @@ fun ProjectMarvelTheme(
             onSecondary = BLACK,
             onBackground = GRAY_50,
             onSurface = WHITE,
-            scrim = GRAY_900
+            scrim = GRAY_900,
+            error = Color.Red
         )
 
         else -> lightColorScheme(
@@ -50,7 +52,8 @@ fun ProjectMarvelTheme(
             onSecondary = BLACK,
             onBackground = GRAY_900,
             onSurface = BLACK,
-            scrim = GRAY_900
+            scrim = GRAY_900,
+            error = Color.Red
         )
     }
     val view = LocalView.current

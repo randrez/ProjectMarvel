@@ -1,5 +1,6 @@
 package com.randrez.projectmarvel.domain.useCase.character
 
+import com.randrez.projectmarvel.R
 import com.randrez.projectmarvel.data.source.ResourceResult
 import com.randrez.projectmarvel.domain.models.character.Character
 import com.randrez.projectmarvel.domain.models.character.toCharacter
@@ -15,12 +16,16 @@ class GetCharactersUseCase constructor(
         emit(ResourceResult.Loading())
         val characterList = mutableListOf<Character>()
 
-        val names = listOf<String>("Iron Man", "Captain America", "Thor", "Hulk")
+        val names = listOf("Iron Man", "Captain America", "Thor", "Hulk", "Spider Man")
 
         names.forEach {
             val response = characterRepository.getCharacterByName(it)
             if(response.code != 200){
-                emit(ResourceResult.Error(response.status))
+                if(response.status.isEmpty()){
+                    emit(ResourceResult.ErrorResource(R.string.error_load_characters))
+                }else{
+                    emit(ResourceResult.Error(response.status))
+                }
                 return@flow
             }
             response.data.characters?.let { remoteCharacters ->
