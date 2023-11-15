@@ -1,6 +1,7 @@
 package com.randrez.projectmarvel.data.remote.responses.character
 
 import com.google.gson.annotations.SerializedName
+import com.randrez.projectmarvel.data.remote.responses.Thumbnail
 
 data class CharacterDTO(
     val id: Int,
@@ -9,5 +10,5 @@ data class CharacterDTO(
     val description: String,
     val resourceURI: String,
     @SerializedName("thumbnail")
-    val thumbnailCharacter: ThumbnailCharacter?
+    val thumbnail: Thumbnail?
 )

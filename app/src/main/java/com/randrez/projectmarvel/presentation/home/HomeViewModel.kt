@@ -1,5 +1,6 @@
 package com.randrez.projectmarvel.presentation.home
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.randrez.projectmarvel.domain.useCase.GenerateMD5UseCase
@@ -12,7 +13,7 @@ class HomeViewModel @Inject constructor(
     private val generateMD5UseCase: GenerateMD5UseCase
 ) : ViewModel() {
 
-    fun generateMD5() {
+    init{
         viewModelScope.launch {
             generateMD5UseCase.invoke()
         }

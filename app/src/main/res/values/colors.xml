@@ -7,4 +7,5 @@
     <color name="GRAY_50">#FAFAFA</color>
     <color name="BLACK">#FF000000</color>
     <color name="GRAY_900">#212121</color>
+    <color name="semiTransparent">@android:color/transparent</color>
 </resources>

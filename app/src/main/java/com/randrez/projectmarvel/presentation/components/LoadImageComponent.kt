@@ -1,13 +1,13 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ErrorOutline
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,27 +16,32 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter.*
 import coil.compose.rememberImagePainter
+import coil.request.CachePolicy
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun LoadImageComponent(image: String, height: Dp = 400.dp, color: Color) {
+fun LoadImageComponent(
+    image: String,
+    color: Color,
+    background: Color
+) {
     val imageLoader = ImageLoader.Builder(LocalContext.current).build()
-
     val painter = rememberImagePainter(data = image, imageLoader = imageLoader) {
-        crossfade(true)
+        crossfade(true).memoryCachePolicy(CachePolicy.ENABLED)
     }
-    when(painter.state){
+
+    when (painter.state) {
         is State.Loading -> {
             Box(
                 contentAlignment = Alignment.Center, modifier = Modifier
                     .fillMaxWidth()
-                    .height(height)
+                    .aspectRatio(1f)
+                    .background(background)
             ) {
                 CircularProgressIndicator(
                     color = Color.White, modifier = Modifier
@@ -45,11 +50,13 @@ fun LoadImageComponent(image: String, height: Dp = 400.dp, color: Color) {
                 )
             }
         }
+
         is State.Error -> {
             Box(
                 contentAlignment = Alignment.Center, modifier = Modifier
                     .fillMaxWidth()
-                    .height(height)
+                    .aspectRatio(1f)
+                    .background(background)
             ) {
                 Icon(
                     imageVector = Icons.Outlined.ErrorOutline,
@@ -57,19 +64,23 @@ fun LoadImageComponent(image: String, height: Dp = 400.dp, color: Color) {
                     modifier = Modifier
                         .size(80.dp)
                         .align(Alignment.Center),
-                    tint = MaterialTheme.colorScheme.error
+                    tint = Color.White
                 )
             }
         }
-        else ->{
+
+        else -> {
             Image(
                 painter = painter,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(height),
-                colorFilter = ColorFilter.tint(color.copy(alpha = 0.3f), blendMode = BlendMode.Darken)
+                    .aspectRatio(1f),
+                colorFilter = ColorFilter.tint(
+                    color = color.copy(alpha = 0.8f),
+                    blendMode = BlendMode.Darken
+                )
             )
         }
     }

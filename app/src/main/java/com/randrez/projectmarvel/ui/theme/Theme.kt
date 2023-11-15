@@ -61,6 +61,7 @@ fun ProjectMarvelTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.scrim.toArgb()
+            window.navigationBarColor = if(darkTheme) GRAY_900.toArgb() else GRAY_300.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

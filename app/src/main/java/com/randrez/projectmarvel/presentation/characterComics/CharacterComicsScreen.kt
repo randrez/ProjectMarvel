@@ -1,4 +1,4 @@
-package com.randrez.projectmarvel.presentation.character
+package com.randrez.projectmarvel.presentation.characterComics
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -8,40 +8,42 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.randrez.projectmarvel.R
-import com.randrez.projectmarvel.domain.models.character.Character
+import com.randrez.projectmarvel.domain.models.comic.Comic
 import com.randrez.projectmarvel.presentation.components.AnimationProgress
 import com.randrez.projectmarvel.presentation.components.EmptyList
 import com.randrez.projectmarvel.presentation.components.ErrorList
 import com.randrez.projectmarvel.presentation.components.LayoutIconMarvel
 import com.randrez.projectmarvel.presentation.components.TopAppBarMarvel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CharacterListScreen(
-    state: CharactersListState,
-    characters: List<Character>,
+fun CharacterComicsScreen(
+    state: CharacterComicsState,
+    comics: List<Comic>,
     loading: Boolean,
-    onSelectCharacter: (Character) -> Unit,
+    onSelectComic: (Comic) -> Unit,
     onBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
-            if (!loading) {
-                TopAppBarMarvel {
-                    onBack()
-                }
+            TopAppBarMarvel(
+                icon = state.icon,
+                title = state.title,
+                color = state.color,
+                colorIcon = Color.White
+            ) {
+                onBack()
             }
         },
         bottomBar = {
             if (!loading) {
-                LayoutIconMarvel()
+                LayoutIconMarvel(iconMarvel = state.iconMarvel)
             }
         }
     ) { paddingValues ->
@@ -58,10 +60,10 @@ fun CharacterListScreen(
                         .align(Alignment.Center)
                 )
             } else {
-                if (characters.isEmpty()) {
+                if (comics.isEmpty()) {
                     EmptyList(
                         modifier = Modifier.align(Alignment.Center),
-                        message = R.string.empty_list_characters
+                        message = R.string.empty_list_comic
                     )
                 }
 
@@ -79,12 +81,13 @@ fun CharacterListScreen(
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(minSize = 200.dp)
                 ) {
-                    items(characters) { character ->
+                    items(comics) { comic ->
                         Row {
-                            ItemCharacter(
+                            ItemComic(
                                 modifier = Modifier.weight(1f),
-                                character = character,
-                                onSelectCharacter = onSelectCharacter
+                                comic = comic,
+                                background = state.color,
+                                onSelectComic = onSelectComic
                             )
                         }
                     }

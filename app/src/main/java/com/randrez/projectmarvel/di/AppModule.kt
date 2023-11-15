@@ -10,6 +10,7 @@ import com.randrez.projectmarvel.domain.repository.dataStore.DataStoreRepository
 import com.randrez.projectmarvel.domain.repository.dataStore.DataStoreRepositoryImpl
 import com.randrez.projectmarvel.domain.useCase.GenerateMD5UseCase
 import com.randrez.projectmarvel.domain.useCase.character.GetCharactersUseCase
+import com.randrez.projectmarvel.domain.useCase.comic.GetComicsByCharacterUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,4 +46,9 @@ object AppModule {
     @Provides
     fun provideGetCharactersUseCase(characterRepository: CharacterRepository): GetCharactersUseCase =
         GetCharactersUseCase(characterRepository = characterRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetComicsByCharacterUseCase(comicRepository: ComicRepository):GetComicsByCharacterUseCase =
+        GetComicsByCharacterUseCase(comicRepository = comicRepository)
 }

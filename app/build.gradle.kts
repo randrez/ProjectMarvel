@@ -23,11 +23,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String", "PUBLIC_API_KEY", "\"94ed4f1ac7b02ec2045f5ac4de536b44\"")
+        buildConfigField("String", "PUBLIC_API_KEY", "\"7b7c80cf395e92a97c7a0478a2fe4823\"")
         buildConfigField(
             "String",
             "PRIVATE_API_KEY",
-            "\"a0ea49160191192ed3e5dbeead0432fc3c51b03b\""
+            "\"8815dcd249c3cb3aa2f831526762c99c235d229c\""
         )
         buildConfigField("String", "TS", "\"1000\"")
         buildConfigField("String", "URL_VERSION_PUBLIC", "\"v1/public/\"")
