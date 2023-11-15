@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.randrez.projectmarvel.R
 import com.randrez.projectmarvel.domain.models.character.Character
@@ -31,6 +32,8 @@ fun CharacterListScreen(
     onSelectCharacter: (Character) -> Unit,
     onBack: () -> Unit
 ) {
+    val screenWidthDp = LocalConfiguration.current.screenWidthDp
+    val columnCount = (screenWidthDp / 2)
     Scaffold(
         topBar = {
             if (!loading) {
@@ -77,7 +80,7 @@ fun CharacterListScreen(
                 }
 
                 LazyVerticalGrid(
-                    columns = GridCells.Adaptive(minSize = 200.dp)
+                    columns = GridCells.Adaptive(minSize = columnCount.dp)
                 ) {
                     items(characters) { character ->
                         Row {
