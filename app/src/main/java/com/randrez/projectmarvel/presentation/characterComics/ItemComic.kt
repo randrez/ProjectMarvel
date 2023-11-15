@@ -1,6 +1,6 @@
 package com.randrez.projectmarvel.presentation.characterComics
 
-import LoadImageComponent
+import LoadImageItemComponent
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
@@ -29,7 +29,7 @@ fun ItemComic(modifier: Modifier, comic: Comic, background:Color ,onSelectComic:
         elevation = 0.dp,
         onSelectCard = { onSelectComic(comic) }) {
         Column {
-            LoadImageComponent(
+            LoadImageItemComponent(
                 image = comic.thumbnail, color = color, background = background
             )
         }

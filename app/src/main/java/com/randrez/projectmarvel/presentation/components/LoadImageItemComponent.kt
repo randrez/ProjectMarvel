@@ -25,7 +25,7 @@ import coil.request.CachePolicy
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun LoadImageComponent(
+fun LoadImageItemComponent(
     image: String,
     color: Color,
     background: Color
@@ -81,6 +81,58 @@ fun LoadImageComponent(
                     color = color.copy(alpha = 0.8f),
                     blendMode = BlendMode.Darken
                 )
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalCoilApi::class)
+@Composable
+fun LoadImageInDetail(image: String) {
+    val imageLoader = ImageLoader.Builder(LocalContext.current).build()
+    val painter = rememberImagePainter(data = image, imageLoader = imageLoader) {
+        crossfade(true).memoryCachePolicy(CachePolicy.ENABLED)
+    }
+    when (painter.state) {
+        is State.Loading -> {
+            Box(
+                contentAlignment = Alignment.Center, modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f)
+            ) {
+                CircularProgressIndicator(
+                    color = Color.White, modifier = Modifier
+                        .size(80.dp)
+                        .align(Alignment.Center)
+                )
+            }
+        }
+
+        is State.Error -> {
+            Box(
+                contentAlignment = Alignment.Center, modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f)
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.ErrorOutline,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(800.dp)
+                        .align(Alignment.Center),
+                    tint = Color.White
+                )
+            }
+        }
+
+        else -> {
+            Image(
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f)
             )
         }
     }

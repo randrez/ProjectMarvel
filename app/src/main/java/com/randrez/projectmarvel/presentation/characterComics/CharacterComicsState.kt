@@ -10,7 +10,6 @@ data class CharacterComicsState(
     val messageError: String? = null,
     @StringRes val messageErrorResource: Int? = null,
     @DrawableRes val icon: Int = R.drawable.marvel,
-    val title: String = "",
     val color: Color = GRAY_900,
-    @DrawableRes val iconMarvel: Int = R.drawable.ic_marvel_red
+    val iconMarvel: Int = R.drawable.ic_marvel_red
 )

@@ -14,9 +14,7 @@ import com.randrez.projectmarvel.data.source.ResourceResult.Loading
 import com.randrez.projectmarvel.data.source.ResourceResult.Success
 import com.randrez.projectmarvel.domain.models.comic.Comic
 import com.randrez.projectmarvel.domain.useCase.comic.GetComicsByCharacterUseCase
-import com.randrez.projectmarvel.tools.ConstantArguments
 import com.randrez.projectmarvel.tools.ConstantArguments.CHARACTER_ID
-import com.randrez.projectmarvel.tools.ConstantArguments.CHARACTER_NAME
 import com.randrez.projectmarvel.tools.ConstantArguments.COLOR
 import com.randrez.projectmarvel.tools.ConstantArguments.ICON
 import com.randrez.projectmarvel.tools.ConstantArguments.ICON_MARVEL
@@ -43,16 +41,12 @@ class CharacterComicsViewModel @Inject constructor(
                 ICON -> savedStateHandle.get<Int>(key)?.let {
                     _state.value = stateValue.copy(icon = it)
                 }
-
-                CHARACTER_NAME -> savedStateHandle.get<String>(key)?.let {
-                    _state.value = stateValue.copy(title = it)
-                }
-
+                
                 COLOR -> savedStateHandle.get<Int>(key)?.let {
                     _state.value = stateValue.copy(color = Color(it))
                 }
 
-                ICON_MARVEL ->savedStateHandle.get<Int>(key)?.let {
+                ICON_MARVEL -> savedStateHandle.get<Int>(key)?.let {
                     _state.value = stateValue.copy(iconMarvel = it)
                 }
 
@@ -80,7 +74,7 @@ class CharacterComicsViewModel @Inject constructor(
 
                 is Success -> {
                     result.data?.let { list ->
-                        list.forEach { comic ->
+                        list.filter { it.image.isNotBlank() }.forEach { comic ->
                             comics.add(comic)
                         }
                     }

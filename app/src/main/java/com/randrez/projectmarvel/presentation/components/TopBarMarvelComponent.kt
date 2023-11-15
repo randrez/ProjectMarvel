@@ -27,11 +27,11 @@ import androidx.compose.ui.unit.sp
 import com.randrez.projectmarvel.R
 
 @Composable
-fun LayoutIconMarvel(@DrawableRes iconMarvel: Int? = null) {
+fun LayoutIconMarvel(@DrawableRes iconMarvel: Int? = null, background:Color = MaterialTheme.colorScheme.background) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.background),
+            .background(background),
         contentAlignment = Alignment.Center
     ) {
         val drawableRes = iconMarvel ?: R.drawable.ic_marvel_red

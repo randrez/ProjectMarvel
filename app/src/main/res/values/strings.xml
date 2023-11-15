@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">ProjectMarvel</string>
-    <string name="start">Inicio</string>
-    <string name="error_load_characters">Error al cargar los personajes</string>
-    <string name="empty_list_characters">Lista vacía de personajes</string>
-    <string name="empty_list_comic">Lista vacía de comic</string>
-    <string name="no_load_comics">No se encontraron comics</string>
-    <string name="no_description">No contiene descripción</string>
+    <string name="start">START</string>
+    <string name="error_load_characters">ERROR LOAD CHARACTERS</string>
+    <string name="empty_list_characters">EMPTY LIST CHARACTER</string>
+    <string name="empty_list_comic">EMPTY LIST COMIC</string>
+    <string name="no_load_comics">NOT FOUND COMICS</string>
+    <string name="no_description">Not contain description</string>
+    <string name="no_title">Not contain title</string>
+    <string name="title">TITLE:</string>
+    <string name="description">DESCRIPTION:</string>
 </resources>

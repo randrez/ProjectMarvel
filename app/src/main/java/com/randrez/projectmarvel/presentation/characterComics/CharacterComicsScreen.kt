@@ -34,7 +34,6 @@ fun CharacterComicsScreen(
         topBar = {
             TopAppBarMarvel(
                 icon = state.icon,
-                title = state.title,
                 color = state.color,
                 colorIcon = Color.White
             ) {

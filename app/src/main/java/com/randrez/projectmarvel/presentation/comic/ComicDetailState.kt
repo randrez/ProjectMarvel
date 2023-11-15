@@ -9,5 +9,8 @@ import com.randrez.projectmarvel.ui.theme.RED_A700
 data class ComicDetailState(
     val color: Color = RED_A700,
     @DrawableRes val iconMarvel: Int = R.drawable.ic_marvel_red,
-    val comic: Comic = Comic()
+    val title:String? = null,
+    val image:String? = null,
+    val description:String? = null,
+    val isBackPressed:Boolean = false
 )

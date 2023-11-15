@@ -1,6 +1,6 @@
 package com.randrez.projectmarvel.presentation.character
 
-import LoadImageComponent
+import LoadImageItemComponent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -42,7 +42,7 @@ fun ItemCharacter(
         elevation = 0.dp,
         onSelectCard = { onSelectCharacter(character) }) {
         Column {
-            LoadImageComponent(
+            LoadImageItemComponent(
                 image = character.image, color = color, background = character.background
             )
             Row(
